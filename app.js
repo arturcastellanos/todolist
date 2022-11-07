@@ -1,20 +1,23 @@
 const express = require("express");
 const bodyParser = require('body-parser');
 let ejs = require('ejs');
-app.set("view engine", "ejs");
-
 
 const app = express();
+app.set("view engine", "ejs");
 
 app.get('/', (req, res) => {
-    
-    var today = new Date();
-    var currentDay = today.getDay();
+
+    var dateObj = new Date();
+    var today = dateObj.toLocaleString('en-GB', { weekday: 'long'})
+    var currentDay = dateObj.getDay();
     if (currentDay === 6 || currentDay === 0) {
-        res.write("<h1>Yay it's the weekend</h1>")
+        var isweekend = "weekend"
     } else {
-        res.sendFile(__dirname + "/index.html");
+        var isweekend = "not a weekend"
     }
+
+    res.render('list', { title: 'Lol', today, isweekend })
+    
 });
 
 
