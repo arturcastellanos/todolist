@@ -7,9 +7,19 @@
     <title>To Do List | <%= title %> </title>
 </head>
 <body>
-    <h1>Yay it's the <%= today  %> </h1>
-    <p>It is <%= isweekend %> </p>
 
+    <h1> <%= day %> </h1>
+    
+    <ul>
+        <% newListItems.forEach(item => { %>
+            <li> <%=item  %> </li>
+        <% }); %> 
+    </ul>
+
+    <form method="post" action="/">
+        <input type="text" name="newItem" placeholder="Add new data">
+        <input type="submit">
+    </form>
 
 </body>
 </html>
